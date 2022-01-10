@@ -44,7 +44,7 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
     }
 
     /**
-     * 先根遍历序递归删除文件夹
+     * 先根遍历序递归删main除文件夹
      *
      * @param dirFile 要被删除的文件或者目录
      * @return 删除成功返回true, 否则返回false
@@ -73,8 +73,8 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
         }
 
         if (children != null) {
-
             String titleText = children.get("title").asText();
+
             // 获得MD语法
             GetTop get = new GetTop(level, titleText).invoke();
 
@@ -96,6 +96,11 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
             // 处理图片
             Optional.ofNullable(children.get("image")).ifPresent(image -> {
                 addImage(image.get("url").asText(), str);
+            });
+
+            // 处理备注
+            Optional.ofNullable(children.get("note")).ifPresent(note -> {
+                addNote(note.asText(), str);
             });
 
             // 调用处理函数

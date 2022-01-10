@@ -1,3 +1,5 @@
+`特此声明：本仓库是基于https://github.com/NotInWine/xmind-to-md 基础上稍加改造而来。`
+
 # XMind To Markdown
 1. XMind思维导图转Markdown文本
 2. [Processon的.pos格式](https://www.processon.com/;jsessionid=779C56220415B43892F9C36E2CB82E9C.jvm1) 思维导图转Markdown文本
@@ -8,10 +10,10 @@
 ![image](src/main/resources/x1.png)
 - 效果图
 ![image](src/main/resources/mdcode.png)
-- 原始脑图
+- 原始脑图1
 ![image](src/main/resources/pos.png)
 ## Demo
-[Deom](src/main/java/com/yxy/demo/Main.java)
+[Demo](src/main/java/com/yxy/demo/Main.java)
 ```java
 package com.yxy.demo;
 
@@ -50,3 +52,7 @@ public class Main {
     *因为需要解压XMind文件读取内部xml*
 2. 暂时不支持读取remark  
     *因为解析遇到点问题，有会的朋友欢迎push一下。或者留言。不胜感谢๑乛◡乛๑*
+
+
+
+https://github.com/marp-team/marp-cli

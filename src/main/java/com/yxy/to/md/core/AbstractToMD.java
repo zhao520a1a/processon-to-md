@@ -4,13 +4,20 @@ import java.util.Set;
 
 /**
  * 抽象父类
+ *
  * @author yangchao
  */
 public abstract class AbstractToMD {
 
     protected void addImage(String source, StringBuilder str) {
         if (source != null) {
-            str.append("![image](" + source + ")\n");
+            str.append("![image](").append(source).append(")\n");
+        }
+    }
+
+    protected void addNote(String note, StringBuilder str) {
+        if (note != null) {
+            str.append(note).append("\n");
         }
     }
 
@@ -84,7 +91,7 @@ public abstract class AbstractToMD {
         }
 
         public GetTop invoke() {
-            int maxLevel = 3;
+            int maxLevel = 5;
             if (level < maxLevel) {
                 // 标题
                 textType = TextType.TITLE;
