@@ -209,9 +209,8 @@ Go 语言程序的 1.10 版本在启动时会初始化整片虚拟内存区域�
 #### tiny 分配器
 
 
-##### &nbsp;由三个字段组成
+##### 由三个字段组成
 - mcache 中包含三个用于分配微对象的字段。这三个字段组成了tiny 分配器（微对象分配器）。
-
 
 ```
 type mcache struct {
@@ -222,7 +221,7 @@ type mcache struct {
 ```
 
 
-##### &nbsp;默认管理16 字节以下非指针类型对象内存
+##### 默认管理16 字节以下非指针类型对象内存
 - 只管理非指针类型对象的内存；
 
 - 管理的内存块大小 maxTinySize 是可以调整的，默认为 16 字节，maxTinySize 的值越大，组合多个对象的可能性就越高，内存浪费也就越严重；maxTinySize 越小，内存浪费就会越少，不过无论如何调整，8 的倍数都是一个很好的选择。
@@ -282,8 +281,8 @@ mcache 中 stackcache 用于分配 groutine 的stack 内存，和普通对象内
 
 
 分配步骤：
-- <16K 先从 mcache 的 stackcache 中分配，如果无法分配，则需要从全局stackpool 分配出一批 stack, 赋给该 mcache 的 stackcache, 再从 stackcache 中分配；
-- >16K 的直接从全局的 stackLarge 分配
+- 当 &lt;16K 先从 mcache 的 stackcache 中分配，如果无法分配，则需要从全局stackpool 分配出一批 stack, 赋给该 mcache 的 stackcache, 再从 stackcache 中分配；
+- 当 &gt;16K 的直接从全局的 stackLarge 分配
 注：上图是 linux 系统中的 stackcache 的示意图，stackfreelist 保存着空闲的stacks列表，分别缓存 2KB、4KB、8KB 和 16KB 的栈内存。 
 
 

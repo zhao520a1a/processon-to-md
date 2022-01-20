@@ -1,44 +1,30 @@
 `特此声明：本仓库是基于https://github.com/NotInWine/xmind-to-md 基础上稍加改造而来。`
 
-# XMind To Markdown
-1. XMind思维导图转Markdown文本
-2. [Processon的.pos格式](https://www.processon.com/;jsessionid=779C56220415B43892F9C36E2CB82E9C.jvm1) 思维导图转Markdown文本
+# Processon To Markdown
+ [Processon](https://www.processon.com/u/5ab9cb2de4b018c271cab8d4/profile) 的.pos 格式思维导图转 Markdown 文本
 
-建议使用第二种方式。解析XMind使用的xmindjbehaveplugin组件暂时不支持最新版本文件的格式
 ## 效果
-- 效果图1
-![image](src/main/resources/x1.png)
-- 效果图
-![image](src/main/resources/mdcode.png)
 - 原始脑图1
-![image](src/main/resources/pos.png)
-## Demo
-[Demo](src/main/java/com/yxy/demo/Main.java)
-```java
-package com.yxy.demo;
+![image](demo/go_memory_allocator_pos.png)
+- 效果图
+![image](demo/go_memory_allocator_md.png)
 
-import com.yxy.to.md.XMindToMd;
-import java.io.IOException;
+## [Demo 示例](src/main/java/com/golden/demo/Main.java)
+```java
+package com.golden.demo;
 
 public class Main {
 
-    private Main() {
-    }
-
     public static void main(String[] args) throws IOException {
-        // xmind
-        ToMdUtils.toMD(
-                "C:\\Users\\yangchao\\Downloads\\Redis-test.xmind",
-                i -> System.out.print(i.toString())
-        );
-
-        // pos
-        ToMdUtils.toMD(
-                "C:\\Users\\yangchao\\Downloads\\Redis.pos",
-                i -> System.out.print(i.toString())
-        );
+        StringBuilder posBuilder = new StringBuilder();
+        ToMdUtils.toMD("./demo/go_memory_allocator.pos", i -> {
+            System.out.print(i.toString());
+            posBuilder.append(i.toString());
+        });
+        Files.write(Paths.get("./demo/go_memory_allocator_pos.md"), posBuilder.toString().getBytes());
     }
 }
+
 ```
 ## 支持
 - 超链接
@@ -47,12 +33,3 @@ public class Main {
 - 多行主题转列表
 - 标签（Labels）
 
-## 限制(Xmind)
-1. 需要有文件目录的写权限  
-    *因为需要解压XMind文件读取内部xml*
-2. 暂时不支持读取remark  
-    *因为解析遇到点问题，有会的朋友欢迎push一下。或者留言。不胜感谢๑乛◡乛๑*
-
-
-
-https://github.com/marp-team/marp-cli

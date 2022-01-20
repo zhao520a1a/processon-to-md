@@ -1,8 +1,8 @@
-package com.yxy.to.md;
+package com.golden.to.md;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.yxy.to.md.core.AbstractToMD;
+import com.golden.to.md.core.AbstractToMD;
 import org.codehaus.plexus.util.IOUtil;
 
 import java.io.File;
@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
 
 /**
  * 工具类
- *
- * @author yangchao
  */
 public class PosToMd extends AbstractToMD implements ToMdInterface {
 
@@ -26,7 +24,7 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
     private PosToMd() {
     }
 
-    protected static PosToMd getInstance() {
+    static PosToMd getInstance() {
         return TO_MD_UTILS;
     }
 
@@ -58,7 +56,6 @@ public class PosToMd extends AbstractToMD implements ToMdInterface {
         if (dirFile.isFile()) {
             return dirFile.delete();
         } else {
-
             for (File file : dirFile.listFiles()) {
                 deleteFile(file);
             }

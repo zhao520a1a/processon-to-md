@@ -1,11 +1,9 @@
-package com.yxy.to.md.core;
+package com.golden.to.md.core;
 
 import java.util.Set;
 
 /**
  * 抽象父类
- *
- * @author yangchao
  */
 public abstract class AbstractToMD {
 
